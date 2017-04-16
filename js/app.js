@@ -1,30 +1,18 @@
 'use strict';
 
-var username = 'wallace';
-var token = '';
+
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+}
+
+var token = GetQueryString('token');
+var username = GetQueryString('username');
+
 var dataArray = [];
 var visits;
-
-(function getToken() {
-    if (token === '') {
-        $.ajax({
-            url: 'https://tuyang.tenhou.cn/users/login',
-            method: 'POST',
-            data: JSON.stringify({
-                "username": "wallace",
-                "password": "IamSOOOOtall"
-            }),
-            contentType: 'application/json;charset=utf-8',
-            dataType: 'json',
-            success: function (data) {
-                if (data.status === 'success') {
-                    token = data.result;
-                    getPuzzles();
-                }
-            }
-        })
-    }
-})()
 
 function getPuzzles() {
     if (token != '') {
