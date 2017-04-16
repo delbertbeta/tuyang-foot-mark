@@ -1,0 +1,205 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.puzzle-area {
+    height: 100%;
+}
+
+.puzzle-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    .puzzle-image {
+        width: 300px;
+        height: 300px;
+        box-shadow: 0 2px 5px grey; // background-color: white;
+        background-image: url(../assets/Background.jpg);
+        background-size: cover;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow: hidden;
+        .part {
+            width: 50%;
+            height: 50%;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-shadow: 0 0 2px grey;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
+        .part.valid {
+            background-color: rgba(0, 0, 0, 0);
+            cursor: pointer;
+            .ok-image {
+                width: 50%;
+            }
+        }
+    }
+}
+
+.timeline-button {
+    position: absolute;
+    bottom: 15%;
+    height: 30px;
+    width: 60%;
+    left: 20%;
+    background-color: #f58e00;
+    border-style: none;
+    border-radius: 30px;
+    color: white;
+    box-shadow: 0px 2px 5px grey;
+}
+
+.timeline-contianer {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    .timeline-block {
+        margin-bottom: 20px;
+        .timeline-title {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            line-height: 20px;
+            font-weight: 700;
+        }
+        .title-circle {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #f58e00;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .timeline-content {
+            position: relative;
+            margin-top: 10px;
+            .timeline-line {
+                position: absolute;
+                width: 1px;
+                height: 100%;
+                background-color: #f58e00;
+                left: 8px;
+            }
+            .timeline-marks {
+                margin-left: 26px;
+                .timeline-mark {
+                    position: relative;
+                    margin-bottom: 10px;
+                    .time {
+                        font-size: 14px;
+                        font-weight: 300;
+                    }
+                    .place {
+                        font-size: 14px;
+                        font-weight: 300;
+                        float: right;
+                    }
+                    .comments {
+                        margin: 5px 0;
+                        display: block;
+                    }
+                    .img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.timeline-button:focus {
+    outline: 0;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+
+.mask.out {
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none;
+}
+
+.detail-panel {
+    position: fixed;
+    padding-top: 5px;
+    width: 80%;
+    z-index: 2;
+    background-color: #f58e00;
+    border-radius: 5px;
+    top: 20%;
+    left: 10%;
+    transition: all 0.5s ease;
+    color: white;
+    overflow: hidden;
+    box-sizing: border-box;
+    .time {
+        font-size: 14px;
+        font-weight: 300;
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+    .place {
+        font-size: 14px;
+        font-weight: 300;
+        float: right;
+        margin-right: 5px;
+        margin-top: 2px;
+    }
+    .comments {
+        margin: 5px 0;
+        display: block;
+        margin-left: 5px;
+    }
+    .img {
+        width: 100%;
+        margin: 0;
+        transform: translateY(5px);
+    }
+}
+
+.detail-panel.out {
+    transform: translateY(-800px);
+}
+
+// ul {
+//     list-style: none;
+//     margin: 0;
+//     display: block;
+//     height: 100%;
+//     width: 100%;
+//     padding: 0;
+// }
+// li {
+//     list-style: none;
+//     position: absolute;
+//     display: block;
+//     margin: 0;
+//     height: 100%;
+//     width: 100%;
+// }
+.hide {
+    display: none;
+}

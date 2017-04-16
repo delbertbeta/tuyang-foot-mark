@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>TimeLine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="timeline-contianer" id="timeline">
+        <template v-for="date in classify" v-once>
+            <section class="timeline-block">
+                <div class="timeline-title"><span class="title-circle"></span>{{ date.date }}</div>
+                <div class="timeline-content">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-marks">
+                        <div v-for="content in date.content" class="timeline-mark">
+                            <span class="time">{{content.time}}</span><span class="place">{{ content.place }}</span><span class="comments">{{content.comments}}</span><img class="img" v-if="typeof content.photo_url != 'undefined'" v-bind:src="content.photo_url" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/timeline.js"></script>
+</body>
+
+</html>

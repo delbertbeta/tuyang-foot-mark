@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>Too Young</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/iSlider.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="puzzle-area" id="puzzleArea">
+    </section>
+    <section class="hide" id="thingsToRender">
+        <div v-for="visit in visits" v-once class="puzzle-page">
+            <div class="puzzle-image" v-bind:style="{ backgroundImage: 'url(' + visit.background_url + ')' }">
+                <template v-for="block in visit.blocks">
+                    <div v-if="block.valid" class="part valid" v-on:touchEnd="showDetail(block.visit_id)"><img class="ok-image" src="assets/OK.png"/></div>
+                    <div v-else class="part"></div>
+                </template>
+            </div>
+        </div>
+    </section>
+    <button class="timeline-button" id="timelineButton">时间线</button>
+    <div class="mask out" id="mask"></div>
+    <div class="detail-panel out" id="detailPanel">
+        <span class="time">{{content.time}}</span>
+        <span class="place">{{ content.place }}</span>
+        <span class="comments">{{content.comments}}</span>
+        <img class="img" v-if="typeof content.photo_url != 'undefined'" v-bind:src="content.photo_url" />
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/iSlider.min.js"></script>
+    <script src="js/iSlider.animate.min.js"></script>
+    <script src="js/iSlider.dot.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
